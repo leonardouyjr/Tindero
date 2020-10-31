@@ -6,7 +6,7 @@ using System.Web.Mvc;
 
 namespace Tindero.Controllers
 {
-    public class OrdersController : Controller
+    public class CustomerOrdersController : Controller
     {
         // GET: Orders
         public ActionResult Index()
