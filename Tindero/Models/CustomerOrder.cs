@@ -5,7 +5,7 @@ using System.Web;
 
 namespace Tindero.Models
 {
-    public class Order
+    public class CustomerOrder
     {
         public int Id { get; set; }
         public string Description { get; set; }
