@@ -1,8 +1,50 @@
-﻿
+﻿@model IEnumerable<Tindero.Models.Product>
+
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Products";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <h2>Products</h2>
 
+@if (!Model.Any())
+{
+    <text>We don't have a product yet.</text>
+}
+else
+{
+    <table class="table table-bordered table-hover">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Cost Price</th>
+                <th>Sale Price</th>
+                <th>Stock Count</th>
+                <th>Order Count</th>
+                <th>ReOrder Level</th>
+                <th>Discontinued</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var product in Model)
+            {
+            <tr>
+                <td>@Html.ActionLink(product.Name, "ShowDetails", "Products", new { id = product.Id }, null)</td>
+                <td>@product.CostPrice</td>
+                <td>@product.SalePrice </td>
+                <td>@product.StockCount</td>
+                <td>@product.OrderCount</td>
+                <td>@product.ReorderLevel</td>
+                @if (product.Discountinued)
+                {
+                    <td>Yes</td>      
+                }
+                else
+                {
+                    <td>No</td>
+                }
+            </tr>
+            }
+        </tbody>
+    </table>
+}

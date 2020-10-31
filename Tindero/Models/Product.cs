@@ -8,9 +8,12 @@ namespace Tindero.Models
     public class Product
     {
         public int Id { get; set; }
-        public int Name { get; set; }
+        public string Name { get; set; }
         public int CostPrice { get; set; }
         public int SalePrice { get; set; }
         public int StockCount { get; set; }
+        public int OrderCount { get; set; }
+        public int ReorderLevel { get; set; }
+        public bool Discountinued { get; set; }
     }
 }
