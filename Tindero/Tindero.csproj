@@ -195,6 +195,10 @@
     <Compile Include="Migrations\202010311508174_InitialDomainModel.Designer.cs">
       <DependentUpon>202010311508174_InitialDomainModel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202010311533317_AddProductCategoryToProduct.cs" />
+    <Compile Include="Migrations\202010311533317_AddProductCategoryToProduct.designer.cs">
+      <DependentUpon>202010311533317_AddProductCategoryToProduct.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Customer.cs" />
@@ -294,6 +298,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202010311508174_InitialDomainModel.resx">
       <DependentUpon>202010311508174_InitialDomainModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202010311533317_AddProductCategoryToProduct.resx">
+      <DependentUpon>202010311533317_AddProductCategoryToProduct.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

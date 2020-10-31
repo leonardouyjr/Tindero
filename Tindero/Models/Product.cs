@@ -15,5 +15,8 @@ namespace Tindero.Models
         public int OrderCount { get; set; }
         public int ReorderLevel { get; set; }
         public bool Discountinued { get; set; }
+
+        public ProductCategory ProductCategory { get; set; }
+        public int ProductCategoryId { get; set; }
     }
 }
