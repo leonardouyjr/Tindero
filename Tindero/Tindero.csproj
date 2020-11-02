@@ -215,6 +215,10 @@
     <Compile Include="Migrations\202011020736442_UpdateInitialModelFieldTypes.designer.cs">
       <DependentUpon>202011020736442_UpdateInitialModelFieldTypes.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202011020750220_PopulateCustomerType.cs" />
+    <Compile Include="Migrations\202011020750220_PopulateCustomerType.designer.cs">
+      <DependentUpon>202011020750220_PopulateCustomerType.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Customer.cs" />
@@ -329,6 +333,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202011020736442_UpdateInitialModelFieldTypes.resx">
       <DependentUpon>202011020736442_UpdateInitialModelFieldTypes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202011020750220_PopulateCustomerType.resx">
+      <DependentUpon>202011020750220_PopulateCustomerType.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
