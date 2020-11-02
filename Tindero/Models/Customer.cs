@@ -17,6 +17,7 @@ namespace Tindero.Models
         public string LastName { get; set; }
         public DateTime Birthdate { get; set; }
 
-
+        public CustomerType CustomerType{get; set;}
+        public int CustomerTypeId { get; set; }
     }
 }
