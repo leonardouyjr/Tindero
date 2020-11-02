@@ -40,6 +40,63 @@ namespace Tindero.Controllers
             return View(customer);
         }
 
-       
+        public ActionResult New()
+        {
+            var viewModel = new NewCustomerViewModel
+            {
+                Customer = new Customer(),
+                CustomerTypes = _context.CustomerTypes.ToList()
+            };
+
+            return View("New", viewModel);
+        }
+
+
+        [ValidateAntiForgeryToken]
+        public ActionResult Create(Customer customer)
+        {
+            if (!ModelState.IsValid)
+            {
+                var errors = ModelState.SelectMany(x => x.Value.Errors.Select(z => z.Exception));
+
+                var viewModel = new NewCustomerViewModel
+                {
+                    Customer = customer,
+                    CustomerTypes = _context.CustomerTypes.ToList()
+                };
+
+                return View("New", viewModel);
+            }
+
+            if (customer.Id == 0)
+            {
+                _context.Customers.Add(customer);
+                _context.SaveChanges();
+                return RedirectToAction("Show", "Customers"); //Go to index page to see the changes
+            }
+            else
+            {
+                var customerInDB = _context.Customers.Single(c => c.Id == customer.Id);
+
+                if (customerInDB != null)
+                {
+                    // TryUpdateModel() can be used, but it is prone to security issues
+                    // Only update what you need to update
+
+                    customerInDB.FirstName = customer.FirstName;
+                    customerInDB.LastName = customer.LastName;
+                    customerInDB.Birthdate = customer.Birthdate;
+                    customerInDB.CustomerTypeId = customer.CustomerTypeId;
+
+                    _context.SaveChanges();
+                    return RedirectToAction("Show", "Customers"); //Go to index page to see the changes
+
+                }
+                else
+                {
+                    return HttpNotFound();
+                }
+            }
+        }
     }
 }

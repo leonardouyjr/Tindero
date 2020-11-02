@@ -5,4 +5,8 @@
 }
 
 <h2>Showing Details for @Model.FirstName  @Model.LastName</h2>
+<ul>
+    <li>Birth Date: @Model.Birthdate.ToShortDateString()</li>
+    <li>Type: @Model.CustomerType.Name</li>
+</ul>
 
