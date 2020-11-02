@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -10,34 +11,35 @@ namespace Tindero.Controllers
 {
     public class CustomersController : Controller
     {
-        // GET: Customers
+        private ApplicationDbContext _context;
 
-        private IEnumerable<Customer> GetCustomers()
+        public CustomersController()
         {
-            var customers = new List<Customer>
-            {
-                new Customer {Id=1, FirstName = "Leonardo Jr.", LastName = "Uy", Birthdate = new DateTime(1978, 08, 24)},
-                new Customer {Id=2, FirstName = "Mary Rose", LastName = "Uy", Birthdate =  new DateTime(1977, 04, 12)},
-                new Customer {Id=3, FirstName = "Leonardo III", LastName = "Uy", Birthdate = new DateTime(2001, 10, 25)},
-                new Customer {Id=4, FirstName = "Keyanna Gael", LastName = "Uy", Birthdate = new DateTime(2003, 06, 13)}
-            };
-
-            return customers;
+            _context = new ApplicationDbContext();
         }
+
+        protected override void Dispose(bool disposing)
+        {
+            _context.Dispose();
+        }
+
+        // GET: Customers        
         public ActionResult Show()
         {
-            var customer = GetCustomers();            
-            return View(customer);
+            var customers = _context.Customers.ToList();            
+            return View(customers);
         }
 
         public ActionResult ShowDetails(int id)
         {
-            var customer = GetCustomers().SingleOrDefault(c => c.Id == id);
+            var customer = _context.Customers.Include(c => c.CustomerType).SingleOrDefault(c => c.Id == id);
 
             if (customer == null)
                 return HttpNotFound();
 
             return View(customer);
         }
+
+       
     }
 }
